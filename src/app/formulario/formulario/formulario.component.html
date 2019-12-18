@@ -1,0 +1,51 @@
+
+
+    
+<div class="container">
+    <br>
+
+    <div class="row">
+        <button   routerLink="/calendar" class="btn btn-outline-primary">Agenda</button>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-md-12">
+        <input-text descricao="Nome" controlName="nome" [form]="form" ></input-text>
+      </div>
+      <div class="col-md-12">
+        <input-text descricao="Endereço" controlName="endereco" [form]="form"></input-text>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <button (click)=salvar() [disabled]="form.invalid == true || form.pristine == true" class="btn btn-success">Gravar</button>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Endereço</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let pessoa of pessoas">
+              <td>{{pessoa.nome}}</td>
+              <td>{{pessoa.endereco}}</td>
+              <td style="width: 180px;">
+                  <button class="btn btn-primary" (click)="editarPessoa(pessoa)">Editar</button>
+                  <button style="margin-left: 10px;" class="btn btn-primary" (click)="excluirPessoa(pessoa)">Excluir</button>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+</div>
